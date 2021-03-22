@@ -78,7 +78,15 @@ int DateManager::typeDateAndChangeToInteger() {
 
     string dateString = "";
     int dateInt = 0;
-    dateString = replaceDateByString( enterYear(), enterMonth(), enterDay() );
+    int year = enterYear();
+    int month = enterMonth();
+    int maxDay = calculateNumberOfDaysInMonth( month, year );
+    int day = 0;
+     do {
+        day = enterDay();
+    } while ( ( day <= maxDay ) == false );
+
+    dateString = replaceDateByString( year, month, day );
     dateInt = atoi(dateString.c_str());
 
     return dateInt;
